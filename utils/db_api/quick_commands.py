@@ -63,7 +63,10 @@ async def update_words(user_id, words):
         words = words[-200:]
         first_space_index = words.find(' ')
 
-    if first_space_index != 0:
-        words = words[first_space_index:]
+        if not first_space_index:
+            words = ''
+        else:
+            if first_space_index != 0:
+                words = words[first_space_index:]
 
     await user.update(words=words).apply()
