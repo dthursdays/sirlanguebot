@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
@@ -11,7 +12,7 @@ debug = config.DEBUG
 logging.basicConfig(
     format=u'%(filename)s [LINE:%(lineno)d] '
            u'#%(levelname)-8s [%(asctime)s]  %(message)s',
-    filename="py_log.log",
+    stream=sys.stdout,
     level=debug
     )
 
