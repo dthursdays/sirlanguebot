@@ -4,7 +4,7 @@ from data import config
 from data.languages import languages
 from utils.additional import remove_tags
 
-tags_to_remove = ["br", "ul", "li"]
+tags_to_remove = ["br", "ul", "li", "h1"]
 
 
 async def analysis(words, language_to_learn, native_language):
@@ -60,7 +60,7 @@ async def story(words, language_to_learn, native_language):
     )
 
     if response and response.choices:
-        return response.choices[0].message.content
+        return remove_tags(response.choices[0].message.content, tags_to_remove)
 
     else:
         return None
